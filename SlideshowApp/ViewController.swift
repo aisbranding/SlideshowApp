@@ -22,6 +22,17 @@ class ViewController: UIViewController {
         // segueから遷移先のResultViewControllerを取得する
         let resultViewController = segue.destination as! ResultViewController
         resultViewController.imageName = imageNames[imageViewNo]
+        if self.timer != nil {
+            // タイマーを止めるコード
+            self.timer.invalidate()
+            self.timer = nil
+            
+            // ボタンの状態を変更する
+            nextButton.isEnabled = true
+            backButton.isEnabled = true
+            playButton.setTitle("再生", for: .normal)
+        }
+
       
     }
     
@@ -92,6 +103,7 @@ class ViewController: UIViewController {
         imageViewNo += 1
         setImageView()
     }
+    
     
 }
 
